@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfiniSynapse AI | Retail Stockout & Reorder Guard</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-left">
+            <div class="logo-badge">⚡ InfiniSynapse AI</div>
+            <h1>Retail Stockout & Reorder Guard</h1>
+        </div>
+        <div class="header-right">
+            <span class="vibe-tag">Vibe Coding 2026</span>
+            <span class="status-indicator live">Agent Ready</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Controls & Metrics Banner -->
+        <section class="action-card">
+            <div class="controls-row">
+                <button id="btn-load-sample" class="btn btn-primary">⚡ Load Retail Inventory (40 SKUs)</button>
+                <label class="btn btn-secondary upload-label">
+                    📁 Upload Custom CSV
+                    <input type="file" id="csv-file-input" accept=".csv" style="display:none;">
+                </label>
+                <button id="btn-export-po" class="btn btn-success" disabled>📄 Export Dispatch PO (.csv)</button>
+            </div>
+            
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <span class="kpi-label">Audited SKUs</span>
+                    <span class="kpi-val" id="metric-total-skus">-</span>
+                </div>
+                <div class="kpi-card danger">
+                    <span class="kpi-label">Critical Stockouts</span>
+                    <span class="kpi-val" id="metric-critical-skus">-</span>
+                </div>
+                <div class="kpi-card warning">
+                    <span class="kpi-label">SKUs Reordering</span>
+                    <span class="kpi-val" id="metric-reorder-skus">-</span>
+                </div>
+                <div class="kpi-card highlight">
+                    <span class="kpi-label">Total Proposed PO</span>
+                    <span class="kpi-val" id="metric-po-cost">$0.00</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Executive Narrative AI Directive -->
+        <section class="directive-card" id="directive-container" style="display:none;">
+            <div class="directive-header">
+                <h3>🧠 InfiniSynapse Executive Decision Directive</h3>
+                <span class="agent-chip">Autonomous Supply Chain Agent</span>
+            </div>
+            <div class="directive-body" id="executive-narrative-text"></div>
+        </section>
+
+        <!-- Inventory Breakdown Table -->
+        <section class="table-section">
+            <div class="table-header">
+                <h2>Prioritized Inventory Replenishment Matrix</h2>
+                <div class="table-filters">
+                    <button class="filter-btn active" data-filter="all">All Items</button>
+                    <button class="filter-btn" data-filter="reorder">Needs Reorder</button>
+                    <button class="filter-btn" data-filter="critical">Critical Only</button>
+                </div>
+            </div>
+            <div class="table-container">
+                <table id="inventory-table">
+                    <thead>
+                        <tr>
+                            <th>SKU ID</th>
+                            <th>Product Name</th>
+                            <th>Category</th>
+                            <th>Stock</th>
+                            <th>Daily Velocity</th>
+                            <th>Lead Time</th>
+                            <th>Runout (Days)</th>
+                            <th>Status Tier</th>
+                            <th>Reorder Units</th>
+                            <th>PO Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inventory-tbody">
+                        <tr>
+                            <td colspan="10" class="empty-state">Click "Load Retail Inventory" or upload a CSV to run the agent.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
